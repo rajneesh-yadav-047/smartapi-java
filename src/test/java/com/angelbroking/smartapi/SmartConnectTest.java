@@ -71,7 +71,7 @@ public class SmartConnectTest {
     }
 
     @Test
-    public void generate_session_success() throws SmartAPIException, IOException {
+    public void generateSession() throws SmartAPIException, IOException {
         User user = new User();
         user.setAccessToken("dummyToken");
         user.setRefreshToken("dummyRefreshToken");
@@ -101,7 +101,7 @@ public class SmartConnectTest {
     }
 
     @Test
-    public void get_profile() throws SmartAPIException, IOException {
+    public void getProfile() throws SmartAPIException, IOException {
         User user = new User();
         user.setUserId("user001");
         user.setUserName("user_name");
@@ -127,7 +127,7 @@ public class SmartConnectTest {
     }
 
     @Test
-    public void place_order() throws SmartAPIException, IOException {
+    public void placeOrder() throws SmartAPIException, IOException {
 
         OrderParams orderParams = new OrderParams();
         orderParams.variety = Constants.VARIETY_STOPLOSS;
@@ -206,7 +206,7 @@ public class SmartConnectTest {
     }
 
     @Test
-    public void modify_order() throws SmartAPIException,IOException {
+    public void modifyOrder() throws SmartAPIException,IOException {
         OrderParams orderParams = new OrderParams();
         orderParams.quantity = 1;
         orderParams.ordertype = Constants.ORDER_TYPE_LIMIT;
@@ -227,7 +227,7 @@ public class SmartConnectTest {
     }
 
     @Test
-    public void cancel_order() throws SmartAPIException,IOException {
+    public void cancelOrder() throws SmartAPIException,IOException {
 
         Order orderResponse = new Order();
         orderResponse.orderId = "generated_orderid";
@@ -239,7 +239,7 @@ public class SmartConnectTest {
     }
 
     @Test
-    public void order_history() throws SmartAPIException,IOException {
+    public void getOrderHistory() throws SmartAPIException,IOException {
 
         JSONObject response = new JSONObject();
         response.put("status",true);
@@ -256,7 +256,7 @@ public class SmartConnectTest {
     }
 
     @Test
-    public void get_ltp() throws SmartAPIException,IOException {
+    public void getLTP() throws SmartAPIException,IOException {
 
         JSONObject response = new JSONObject();
         response.put("status",true);
@@ -283,7 +283,7 @@ public class SmartConnectTest {
     }
 
     @Test
-    public void trade_book() throws SmartAPIException,IOException {
+    public void getTrades() throws SmartAPIException,IOException {
 
         JSONObject response = new JSONObject();
         response.put("status",true);
@@ -300,7 +300,7 @@ public class SmartConnectTest {
     }
 
     @Test
-    public void get_RMS() throws SmartAPIException,IOException {
+    public void getRMS() throws SmartAPIException,IOException {
 
         JSONObject response = new JSONObject();
         response.put("status",true);
@@ -327,7 +327,7 @@ public class SmartConnectTest {
     }
 
     @Test
-    public void get_holding() throws SmartAPIException,IOException {
+    public void getHolding() throws SmartAPIException,IOException {
 
         JSONObject response = new JSONObject();
         response.put("status",true);
@@ -364,7 +364,7 @@ public class SmartConnectTest {
     }
 
     @Test
-    public void get_all_holding() throws SmartAPIException,IOException {
+    public void getAllHolding() throws SmartAPIException,IOException {
 
         JSONObject response = new JSONObject();
         response.put("status",true);
@@ -412,7 +412,7 @@ public class SmartConnectTest {
     }
 
     @Test
-    public void get_position() throws SmartAPIException,IOException {
+    public void getPosition() throws SmartAPIException,IOException {
 
         JSONObject response = new JSONObject();
         response.put("status",true);
@@ -448,7 +448,7 @@ public class SmartConnectTest {
     }
 
     @Test
-    public void convert_position() throws  SmartAPIException, IOException{
+    public void convertPosition() throws  SmartAPIException, IOException{
 
         JSONObject requestObejct = new JSONObject();
         requestObejct.put("exchange", "NSE");
@@ -472,7 +472,7 @@ public class SmartConnectTest {
     }
 
     @Test
-    public void gtt_create_rule() throws SmartAPIException,IOException {
+    public void gttCreateRule() throws SmartAPIException,IOException {
         GttParams gttParams = new GttParams();
 
         gttParams.tradingsymbol = "SBIN-EQ";
@@ -495,7 +495,7 @@ public class SmartConnectTest {
     }
 
     @Test
-    public void gtt_modify_rule() throws SmartAPIException,IOException {
+    public void gttModifyRule() throws SmartAPIException,IOException {
         GttParams gttParams = new GttParams();
 
         gttParams.tradingsymbol = "SBIN-EQ";
@@ -519,7 +519,7 @@ public class SmartConnectTest {
     }
 
     @Test
-    public void gtt_cancel_rule() throws SmartAPIException,IOException {
+    public void gttCancelRule() throws SmartAPIException,IOException {
 
         Integer id = 1000051;
         String token = "3045";
@@ -534,7 +534,7 @@ public class SmartConnectTest {
     }
 
     @Test
-    public void get_rule_details() throws SmartAPIException,IOException {
+    public void gttRuleDetails() throws SmartAPIException,IOException {
 
         Integer id = 1000051;
 
@@ -566,7 +566,7 @@ public class SmartConnectTest {
     }
 
     @Test
-    public void get_rule_list() throws SmartAPIException,IOException {
+    public void gttRuleList() throws SmartAPIException,IOException {
 
         List<String> status = new ArrayList<String>() {
             {
@@ -605,7 +605,7 @@ public class SmartConnectTest {
     }
 
     @Test
-    public void get_candle_data() throws SmartAPIException,IOException {
+    public void candleData() throws SmartAPIException,IOException {
 
         JSONObject requestObejct = new JSONObject();
         requestObejct.put("exchange", "NSE");
@@ -644,7 +644,7 @@ public class SmartConnectTest {
     }
 
     @Test
-    public void estimate_charges() throws SmartAPIException, IOException {
+    public void estimateCharges() throws SmartAPIException, IOException {
         List<EstimateChargesParams> estimateChargesParamsList = new ArrayList<>();
         EstimateChargesParams estimate_Charges_Params = new EstimateChargesParams();
         estimate_Charges_Params.product_type = Constants.PRODUCT_DELIVERY;
@@ -713,7 +713,7 @@ public class SmartConnectTest {
     }
 
     @Test
-    public void getTrans_status() throws SmartAPIException,IOException{
+    public void getTranStatus() throws SmartAPIException,IOException{
         JSONObject payload = new JSONObject();
         payload.put("ReqId", "1431307824801952");
 
@@ -766,7 +766,7 @@ public class SmartConnectTest {
     }
 
     @Test
-    public void gainers_losers() throws SmartAPIException,IOException{
+    public void gainersLosers() throws SmartAPIException,IOException{
         JSONObject payload = new JSONObject();
         payload.put("datatype", "PercOIGainers");
         payload.put("expirytype", "NEAR");
@@ -792,7 +792,7 @@ public class SmartConnectTest {
     }
 
     @Test
-    public void putcall_ratio() throws SmartAPIException,IOException{
+    public void putCallRatio() throws SmartAPIException,IOException{
         JSONObject response = new JSONObject();
         response.put("status",true);
         response.put("message","success");
@@ -839,7 +839,7 @@ public class SmartConnectTest {
     }
 
     @Test
-    public void testGetSearchScript_Success() throws SmartAPIException, IOException {
+    public void getSearchScrip() throws SmartAPIException, IOException {
         // Mock the necessary objects
         JSONObject payload = new JSONObject();
         when(smartConnect.getSearchScrip(payload)).thenReturn("response-data");
@@ -958,7 +958,7 @@ public class SmartConnectTest {
 
     // Testing market data success for Full payload
     @Test
-    public void testMarketData_Success() throws SmartAPIException, IOException {
+    public void marketData() throws SmartAPIException, IOException {
         String url = routes.get("api.market.data");
         JSONObject params = getMarketDataRequest("FULL");
         when(smartAPIRequestHandler.postRequest(eq(this.apiKey), eq(url), eq(params), eq(this.accessToken))).thenReturn(createMarketDataResponse());
