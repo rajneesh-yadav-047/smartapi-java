@@ -376,7 +376,7 @@ public void getMarginDetails(SmartConnect smartConnect) throws SmartAPIException
     /* Smart Stream */
 	String clientCode = "client_code";
     User user = smartConnect.generateSession(clientCode, "<password>", "<totp>");
-	String feedToken = user.getFeedToken();
+    String feedToken = user.getFeedToken();
     SmartStreamListener smartStreamListener = new SmartStreamListener() {
             @Override
             public void onLTPArrival(LTP ltp) {
@@ -434,7 +434,7 @@ tokenSet.add(new TokenID(ExchangeType.NSE_CM, "26009")); // NIFTY BANK
 tokenSet.add(new TokenID(ExchangeType.BSE_CM, "19000"));
 
 smartStreamTicker.subscribe(SmartStreamSubsMode.LTP,tokenSet);
-
+smartStreamTicker.disconnect();
 ```
 For more details, take a look at Examples.java in the sample directory.
 
