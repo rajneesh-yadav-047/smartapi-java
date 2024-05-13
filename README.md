@@ -573,3 +573,70 @@ For more details, take a look at Examples.java in the sample directory.
 
 ```
 For more details, take a look at Examples.java in the sample directory.
+
+## Smart Stream Ticker Usage
+
+```java
+
+    /* Smart Stream */
+    String feedToken = "feed_token";
+    String clientCode = "client_code";
+    SmartStreamListener smartStreamListener = new SmartStreamListener() {
+            @Override
+            public void onLTPArrival(LTP ltp) {
+                    System.out.println("ltp value==========>" + ltp.getExchangeType());
+                    }
+            
+            @Override
+            public void onQuoteArrival(Quote quote) {
+            
+                    }
+            
+            @Override
+            public void onSnapQuoteArrival(SnapQuote snapQuote) {
+            
+                    }
+            
+            @Override
+            public void onDepthArrival(Depth depth) {
+            
+                    }
+            
+            @Override
+            public void onConnected() {
+                    System.out.println("connected successfully");
+                    }
+            
+            @Override
+            public void onDisconnected() {
+            
+                    }
+            
+            @Override
+            public void onError(SmartStreamError smartStreamError) {
+            
+                    }
+            
+            @Override
+            public void onPong() {
+            
+                    }
+            
+            @Override
+            public SmartStreamError onErrorCustom() {
+                    return null;
+                    }
+    };
+
+SmartStreamTicker smartStreamTicker = new SmartStreamTicker(clientCode,feedToken,smartStreamListener);
+smartStreamTicker.connect();
+Boolean connection =  smartStreamTicker.isConnectionOpen();
+
+Set<TokenID> tokenSet = new HashSet<>();
+tokenSet.add(new TokenID(ExchangeType.NSE_CM, "26000")); // NIFTY
+tokenSet.add(new TokenID(ExchangeType.NSE_CM, "26009")); // NIFTY BANK
+tokenSet.add(new TokenID(ExchangeType.BSE_CM, "19000"));
+
+smartStreamTicker.subscribe(SmartStreamSubsMode.LTP,tokenSet);
+
+```
