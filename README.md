@@ -374,8 +374,9 @@ public void getMarginDetails(SmartConnect smartConnect) throws SmartAPIException
 ```java
 
     /* Smart Stream */
-    String feedToken = "feed_token";
-    String clientCode = "client_code";
+	String clientCode = "client_code";
+    User user = smartConnect.generateSession(clientCode, "<password>", "<totp>");
+	String feedToken = user.getFeedToken();
     SmartStreamListener smartStreamListener = new SmartStreamListener() {
             @Override
             public void onLTPArrival(LTP ltp) {
