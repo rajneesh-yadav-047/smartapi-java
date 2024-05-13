@@ -434,7 +434,7 @@ tokenSet.add(new TokenID(ExchangeType.NSE_CM, "26009")); // NIFTY BANK
 tokenSet.add(new TokenID(ExchangeType.BSE_CM, "19000"));
 
 smartStreamTicker.subscribe(SmartStreamSubsMode.LTP,tokenSet);
-
+smartStreamTicker.disconnect();
 ```
 For more details, take a look at Examples.java in the sample directory.
 
