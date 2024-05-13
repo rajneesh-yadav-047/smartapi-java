@@ -373,124 +373,66 @@ public void getMarginDetails(SmartConnect smartConnect) throws SmartAPIException
 
 ```java
 
-	/* SmartAPITicker */
-	String clientId = "<clientId>";
-	User user = smartConnect.generateSession("<clientId>", "<password>", "<totp>");
-	String feedToken = user.getFeedToken();
-	String strWatchListScript = "nse_cm|2885&nse_cm|1594&nse_cm|11536&mcx_fo|221658";
-	String task = "mw";
+    /* Smart Stream */
+    String feedToken = "feed_token";
+    String clientCode = "client_code";
+    SmartStreamListener smartStreamListener = new SmartStreamListener() {
+            @Override
+            public void onLTPArrival(LTP ltp) {
+                    System.out.println("ltp value==========>" + ltp.getExchangeType());
+                    }
+            
+            @Override
+            public void onQuoteArrival(Quote quote) {
+            
+                    }
+            
+            @Override
+            public void onSnapQuoteArrival(SnapQuote snapQuote) {
+            
+                    }
+            
+            @Override
+            public void onDepthArrival(Depth depth) {
+            
+                    }
+            
+            @Override
+            public void onConnected() {
+                    System.out.println("connected successfully");
+                    }
+            
+            @Override
+            public void onDisconnected() {
+            
+                    }
+            
+            @Override
+            public void onError(SmartStreamError smartStreamError) {
+            
+                    }
+            
+            @Override
+            public void onPong() {
+            
+                    }
+            
+            @Override
+            public SmartStreamError onErrorCustom() {
+                    return null;
+                    }
+    };
 
-	examples.tickerUsage(clientId, feedToken, strWatchListScript, task);
+SmartStreamTicker smartStreamTicker = new SmartStreamTicker(clientCode,feedToken,smartStreamListener);
+smartStreamTicker.connect();
+Boolean connection =  smartStreamTicker.isConnectionOpen();
 
-	/*
-	* String jwtToken = user.getAccessToken(); 
-	* String apiKey = "<api_key>";
-	* String actionType = "subscribe"; String feedType = "order_feed";
-	* 
-	* examples.smartWebSocketUsage(clientId, jwtToken, apiKey, actionType,
-	* feedType);
-	* 
-	*/
-	
-	public void tickerUsage(String clientId, String feedToken, String strWatchListScript, String task)
-			throws SmartAPIException {
+Set<TokenID> tokenSet = new HashSet<>();
+tokenSet.add(new TokenID(ExchangeType.NSE_CM, "26000")); // NIFTY
+tokenSet.add(new TokenID(ExchangeType.NSE_CM, "26009")); // NIFTY BANK
+tokenSet.add(new TokenID(ExchangeType.BSE_CM, "19000"));
 
-		SmartAPITicker tickerProvider = new SmartAPITicker(clientId, feedToken, strWatchListScript, task);
-
-		tickerProvider.setOnConnectedListener(new OnConnect() {
-			@Override
-			public void onConnected() {
-				System.out.println("subscribe() called!");
-				tickerProvider.subscribe();
-			}
-		});
-
-		tickerProvider.setOnTickerArrivalListener(new OnTicks() {
-			@Override
-			public void onTicks(JSONArray ticks) {
-				System.out.println("ticker data: " + ticks.toString());
-			}
-		});
-
-		/**
-		 * connects to SmartAPI ticker server for getting live quotes
-		 */
-		tickerProvider.connect();
-
-		/**
-		 * You can check, if websocket connection is open or not using the following
-		 * method.
-		 */
-		boolean isConnected = tickerProvider.isConnectionOpen();
-		System.out.println(isConnected);
-
-		// After using the SmartAPI ticker, close websocket connection.
-		// tickerProvider.disconnect();
-
-	}
-			
-	public void smartWebSocketUsage(String clientId, String jwtToken, String apiKey, String actionType, String feedType)
-			throws SmartAPIException {
-
-		SmartWebsocket smartWebsocket = new SmartWebsocket(clientId, jwtToken, apiKey, actionType, feedType);
-
-		smartWebsocket.setOnConnectedListener(new SmartWSOnConnect() {
-
-			@Override
-			public void onConnected() {
-
-				smartWebsocket.runscript();
-			}
-		});
-
-		smartWebsocket.setOnDisconnectedListener(new SmartWSOnDisconnect() {
-			@Override
-			public void onDisconnected() {
-				System.out.println("onDisconnected");
-			}
-		});
-
-		/** Set error listener to listen to errors. */
-		smartWebsocket.setOnErrorListener(new SmartWSOnError() {
-			@Override
-			public void onError(Exception exception) {
-				System.out.println("onError: " + exception.getMessage());
-			}
-
-			@Override
-			public void onError(SmartAPIException smartAPIException) {
-				System.out.println("onError: " + smartAPIException.getMessage());
-			}
-
-			@Override
-			public void onError(String error) {
-				System.out.println("onError: " + error);
-			}
-		});
-
-		smartWebsocket.setOnTickerArrivalListener(new SmartWSOnTicks() {
-			@Override
-			public void onTicks(JSONArray ticks) {
-				System.out.println("ticker data: " + ticks.toString());
-			}
-		});
-
-		/**
-		 * connects to SmartAPI ticker server for getting live quotes
-		 */
-		smartWebsocket.connect();
-
-		/**
-		 * You can check, if websocket connection is open or not using the following
-		 * method.
-		 */
-		boolean isConnected = smartWebsocket.isConnectionOpen();
-		System.out.println(isConnected);
-
-		// After using the SmartAPI ticker, close websocket connection.
-		// smartWebsocket.disconnect();
-
-	}
+smartStreamTicker.subscribe(SmartStreamSubsMode.LTP,tokenSet);
 
 ```
 For more details, take a look at Examples.java in the sample directory.
@@ -574,69 +516,3 @@ For more details, take a look at Examples.java in the sample directory.
 ```
 For more details, take a look at Examples.java in the sample directory.
 
-## Smart Stream Ticker Usage
-
-```java
-
-    /* Smart Stream */
-    String feedToken = "feed_token";
-    String clientCode = "client_code";
-    SmartStreamListener smartStreamListener = new SmartStreamListener() {
-            @Override
-            public void onLTPArrival(LTP ltp) {
-                    System.out.println("ltp value==========>" + ltp.getExchangeType());
-                    }
-            
-            @Override
-            public void onQuoteArrival(Quote quote) {
-            
-                    }
-            
-            @Override
-            public void onSnapQuoteArrival(SnapQuote snapQuote) {
-            
-                    }
-            
-            @Override
-            public void onDepthArrival(Depth depth) {
-            
-                    }
-            
-            @Override
-            public void onConnected() {
-                    System.out.println("connected successfully");
-                    }
-            
-            @Override
-            public void onDisconnected() {
-            
-                    }
-            
-            @Override
-            public void onError(SmartStreamError smartStreamError) {
-            
-                    }
-            
-            @Override
-            public void onPong() {
-            
-                    }
-            
-            @Override
-            public SmartStreamError onErrorCustom() {
-                    return null;
-                    }
-    };
-
-SmartStreamTicker smartStreamTicker = new SmartStreamTicker(clientCode,feedToken,smartStreamListener);
-smartStreamTicker.connect();
-Boolean connection =  smartStreamTicker.isConnectionOpen();
-
-Set<TokenID> tokenSet = new HashSet<>();
-tokenSet.add(new TokenID(ExchangeType.NSE_CM, "26000")); // NIFTY
-tokenSet.add(new TokenID(ExchangeType.NSE_CM, "26009")); // NIFTY BANK
-tokenSet.add(new TokenID(ExchangeType.BSE_CM, "19000"));
-
-smartStreamTicker.subscribe(SmartStreamSubsMode.LTP,tokenSet);
-
-```
