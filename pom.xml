@@ -5,7 +5,7 @@
 
 	<groupId>com.angelbroking.smartapi</groupId>
 	<artifactId>smartapi-java</artifactId>
-	<version>2.2.3</version>
+	<version>2.2.4</version>
 	<packaging>jar</packaging>
 
 	<name>smartapi-java</name>

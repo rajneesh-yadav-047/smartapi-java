@@ -13,7 +13,7 @@ import java.util.Map;
 public class Routes {
 
 	public Map<String, String> routes;
-	private static String _rootUrl = "https://apiconnect.angelbroking.com";
+	private static String _rootUrl = "https://apiconnect.angelone.in";
 	private static String _loginUrl = _rootUrl+"/rest/auth/angelbroking/user/v1/loginByPassword";
 	private static String _wsuri = "wss://wsfeeds.angelbroking.com/NestHtml5Mobile/socket/stream";
 	private static String _smartStreamWSURI = "wss://smartapisocket.angelone.in/smart-stream";
