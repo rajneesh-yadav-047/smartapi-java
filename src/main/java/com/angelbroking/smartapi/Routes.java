@@ -46,6 +46,7 @@ public class Routes {
 				put("api.gtt.details", "/rest/secure/angelbroking/gtt/v1/ruleDetails");
 				put("api.gtt.list", "/rest/secure/angelbroking/gtt/v1/ruleList");
 				put("api.candle.data", "/rest/secure/angelbroking/historical/v1/getCandleData");
+				put("api.oi.data", "/rest/secure/angelbroking/historical/v1/getOIData");
 				put("api.search.script.data", "/rest/secure/angelbroking/order/v1/searchScrip");
 				put("api.market.data", "/rest/secure/angelbroking/market/v1/quote");
 				put("api.margin.batch", "/rest/secure/angelbroking/margin/v1/batch");
@@ -57,6 +58,8 @@ public class Routes {
 				put("api.optionGreek", "/rest/secure/angelbroking/marketData/v1/optionGreek");
 				put("api.gainersLosers", "/rest/secure/angelbroking/marketData/v1/gainersLosers");
 				put("api.putCallRatio", "/rest/secure/angelbroking/marketData/v1/putCallRatio");
+				put("api.nseIntraday", "/rest/secure/angelbroking/marketData/v1/nseIntraday");
+				put("api.bseIntraday", "/rest/secure/angelbroking/marketData/v1/bseIntraday");
 				put("api.oIBuildup", "/rest/secure/angelbroking/marketData/v1/OIBuildup");
 			}
 		};
