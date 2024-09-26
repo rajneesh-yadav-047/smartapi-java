@@ -734,6 +734,18 @@ public class SmartConnect {
 		}
 	}
 
+	public JSONArray oiData(JSONObject params) {
+		try {
+			String url = routes.get("api.oi.data");
+			JSONObject response = smartAPIRequestHandler.postRequest(this.apiKey, url, params, accessToken);
+			log.info("response : {}",response);
+			return response.getJSONArray("data");
+		} catch (Exception | SmartAPIException e) {
+			log.error(e.getMessage());
+			return null;
+		}
+	}
+
 	/**
 
 	 * Get Search Script Data.
@@ -1003,6 +1015,40 @@ public class SmartConnect {
 		} catch (JSONException ex) {
 			log.error("{}  while getting putCallRatio {}", JSON_EXCEPTION_OCCURRED, ex.getMessage());
 			throw new JSONException(String.format("%s  while fetching putCallRatio data %s", JSON_EXCEPTION_ERROR_MSG, ex.getMessage()));
+		}
+	}
+
+	public JSONObject nseIntraday() throws IOException, SmartAPIException {
+		try {
+			String url = routes.get("api.nseIntraday");
+			JSONObject response = smartAPIRequestHandler.getRequest(this.apiKey, url, accessToken);
+			return response;
+		} catch (SmartAPIException ex) {
+			log.error("{} while getting nseIntraday {}", SMART_API_EXCEPTION_OCCURRED, ex.toString());
+			throw new SmartAPIException(String.format("%s in getting nseIntraday %s", SMART_API_EXCEPTION_ERROR_MSG, ex));
+		} catch (IOException ex) {
+			log.error("{} while getting nseIntraday {}", IO_EXCEPTION_OCCURRED, ex.getMessage());
+			throw new IOException(String.format("%s  while fetching nseIntraday data %s", IO_EXCEPTION_ERROR_MSG, ex.getMessage()));
+		} catch (JSONException ex) {
+			log.error("{}  while getting nseIntraday {}", JSON_EXCEPTION_OCCURRED, ex.getMessage());
+			throw new JSONException(String.format("%s  while fetching nseIntraday data %s", JSON_EXCEPTION_ERROR_MSG, ex.getMessage()));
+		}
+	}
+
+	public JSONObject bseIntraday() throws IOException, SmartAPIException {
+		try {
+			String url = routes.get("api.bseIntraday");
+			JSONObject response = smartAPIRequestHandler.getRequest(this.apiKey, url, accessToken);
+			return response;
+		} catch (SmartAPIException ex) {
+			log.error("{} while getting bseIntraday {}", SMART_API_EXCEPTION_OCCURRED, ex.toString());
+			throw new SmartAPIException(String.format("%s in getting bseIntraday %s", SMART_API_EXCEPTION_ERROR_MSG, ex));
+		} catch (IOException ex) {
+			log.error("{} while getting bseIntraday {}", IO_EXCEPTION_OCCURRED, ex.getMessage());
+			throw new IOException(String.format("%s  while fetching bseIntraday data %s", IO_EXCEPTION_ERROR_MSG, ex.getMessage()));
+		} catch (JSONException ex) {
+			log.error("{}  while getting bseIntraday {}", JSON_EXCEPTION_OCCURRED, ex.getMessage());
+			throw new JSONException(String.format("%s  while fetching bseIntraday data %s", JSON_EXCEPTION_ERROR_MSG, ex.getMessage()));
 		}
 	}
 
