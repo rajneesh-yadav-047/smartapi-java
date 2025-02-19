@@ -309,6 +309,7 @@ public class SmartConnect {
 			JSONObject jsonObject = smartAPIRequestHandler.postRequest(this.apiKey, url, params, accessToken);
 			Order order = new Order();
 			order.orderId = jsonObject.getJSONObject("data").getString("orderid");
+			order.uniqueOrderId = jsonObject.getJSONObject("data").getString("uniqueorderid");
 			log.info("order : {}",order);
 			return order;
 		} catch (Exception | SmartAPIException e) {
