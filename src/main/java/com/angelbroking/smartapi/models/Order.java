@@ -109,6 +109,9 @@ public class Order {
 	@SerializedName("filltime")
 	public String fillTime;
 
+	@SerializedName("uniqueorderid")
+	public String uniqueOrderId;
+
 	@Override
 	public String toString() {
 		return "Order [disclosedQuantity=" + disclosedQuantity + ", duration=" + duration + ", tradingSymbol="
@@ -122,7 +125,7 @@ public class Order {
 				+ instrumentType + ", strikePrice=" + strikePrice + ", optionType=" + optionType + ", expiryDate="
 				+ expiryDate + ", lotSize=" + lotSize + ", cancelSize=" + cancelSize + ", filledShares=" + filledShares
 				+ ", orderStatus=" + orderStatus + ", unfilledShares=" + unfilledShares + ", fillId=" + fillId
-				+ ", fillTime=" + fillTime + "]";
+				+ ", fillTime=" + fillTime + ", uniqueorderid=" + uniqueOrderId + "]";
 	}
 
 }
