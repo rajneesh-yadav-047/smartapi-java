@@ -36,9 +36,10 @@ This repository includes a powerful, feature-rich desktop application built with
 
 ### Screenshots
 
-*(Replace these with your own screenshots)*
 
-**Login View**
+
+**Login Window**
+
 ![Screenshot 2025-06-18 001113](https://github.com/user-attachments/assets/0def4c50-30fc-4c3e-8ca1-2511f64f61f0)
 
 
