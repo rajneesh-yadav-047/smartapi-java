@@ -38,11 +38,13 @@ This repository includes a powerful, feature-rich desktop application built with
 
 *(Replace these with your own screenshots)*
 
-**Dashboard View**
-![Dashboard](https://via.placeholder.com/800x450.png?text=Dashboard+Screenshot)
+**Login View**
+![Screenshot 2025-06-18 001113](https://github.com/user-attachments/assets/0def4c50-30fc-4c3e-8ca1-2511f64f61f0)
 
-**Backtesting Report & Chart**
-![Backtesting](https://via.placeholder.com/800x450.png?text=Backtesting+Screenshot)
+
+**Dashboard**
+![Screenshot 2025-06-18 001852](https://github.com/user-attachments/assets/bb822727-957a-4a12-9d2a-ac03aff4bf92)
+
 
 ### How to Run the GUI
 
